@@ -8,6 +8,7 @@ import com.dressup.demo.models.User;
 import com.dressup.demo.models.UserAuthority;
 import com.dressup.demo.repositories.UserAuthorityRepository;
 import com.dressup.demo.repositories.UserRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,7 +31,7 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(final String nickname) throws UsernameNotFoundException {
+    public User loadUserByUsername(final String nickname) throws UsernameNotFoundException {
         return userRepo.findByNickname(nickname);
     }
 

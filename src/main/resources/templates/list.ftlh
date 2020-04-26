@@ -36,7 +36,7 @@
     function LoadNews() {
         /*let itemSelect = $('#future');*/
         $.getJSON("/items/all", function () {
-            itemSelect.html('');
+            itemSelect.empty();
             $.each(function (i) {
                 $('.container').append('<div class="item-card">' + i + this + '</div>');
             });

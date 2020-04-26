@@ -1,5 +1,6 @@
 package com.dressup.demo.models;
 
+import com.dressup.demo.utils.FieldMatch;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,13 +18,16 @@ import java.util.List;
 import java.util.Set;
 
 @Data
+@FieldMatch.List({
+        @FieldMatch(first = "password", second = "passwordRepeat", message = "The password fields must match")
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @DynamicUpdate
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -59,4 +64,33 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Item> items = new ArrayList<Item>();
 
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }

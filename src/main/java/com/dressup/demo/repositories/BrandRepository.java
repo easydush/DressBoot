@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BrandRepository extends CrudRepository<Brand, Integer> {
     Brand findBrandById(Integer id);
+    Integer countAll();
+    Brand findBrandByName(String name);
 }
