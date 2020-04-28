@@ -3,8 +3,8 @@ package com.dressup.demo.config;
 import com.dressup.demo.models.Brand;
 import com.dressup.demo.models.Item;
 import com.dressup.demo.models.Look;
-import com.dressup.demo.models.UserAuthority;
 import com.dressup.demo.utils.StringToEntityConverter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,41 +26,41 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/static/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/static/css/");
         registry.addResourceHandler("/fonts/**").addResourceLocations("/resources/static/fonts/");
+
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/static/fonts/");
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/403").setViewName("error/access_denied");
-        registry.addViewController("/about").setViewName("static/about");
+
+    @Bean
+    public Validator validator() {
+        return new LocalValidatorFactoryBean();
     }
 
     @Bean
-    public Validator validator(){
-        return new LocalValidatorFactoryBean();
+    @ConditionalOnMissingBean(ClassPathTldsLoader.class)
+    public ClassPathTldsLoader classPathTldsLoader() {
+        return new ClassPathTldsLoader();
     }
 
     @Override
     public void addFormatters(FormatterRegistry formatterRegistry) {
         formatterRegistry.addConverter(itemGenericConverter());
         formatterRegistry.addConverter(lookGenericConverter());
-        formatterRegistry.addConverter(userAuthorityGenericConverter());
         formatterRegistry.addConverter(brandGenericConverter());
     }
 
     @Bean
-    public StringToEntityConverter itemGenericConverter(){
+    public StringToEntityConverter itemGenericConverter() {
         return new StringToEntityConverter(Item.class);
     }
+
     @Bean
-    public StringToEntityConverter lookGenericConverter(){
+    public StringToEntityConverter lookGenericConverter() {
         return new StringToEntityConverter(Look.class);
     }
+
     @Bean
-    public StringToEntityConverter brandGenericConverter(){
+    public StringToEntityConverter brandGenericConverter() {
         return new StringToEntityConverter(Brand.class);
-    }
-    @Bean
-    public StringToEntityConverter userAuthorityGenericConverter(){
-        return new StringToEntityConverter(UserAuthority.class);
     }
 }

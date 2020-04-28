@@ -1,13 +1,12 @@
 package com.dressup.demo.repositories;
 
 import com.dressup.demo.models.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
-    User findByUsername(String username);
-    boolean existsUserByUsername(String username);
-    User findUserById(long id);
-    Integer countUsers();
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findUserByUsername(String username);
 }

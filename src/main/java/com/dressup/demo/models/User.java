@@ -49,6 +49,8 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Look> looks = new ArrayList<Look>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Item> items = new ArrayList<Item>();
 
     @Enumerated(value = EnumType.STRING)
     private State state;
