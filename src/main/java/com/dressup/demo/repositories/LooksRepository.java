@@ -16,4 +16,6 @@ public interface LooksRepository extends JpaRepository<Look, Long> {
     List<Look> findAllByItems(Item item);
     Optional<Look> findByName(String name);
     Optional<Look> findById(long id);
+
+    List<Look> findAllByOwner(User owner);
 }

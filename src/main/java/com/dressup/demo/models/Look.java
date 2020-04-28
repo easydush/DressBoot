@@ -24,7 +24,7 @@ public class Look {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private int id;
+    private long id;
 
     @Length(max = 50)
     @Column(columnDefinition = "text")
