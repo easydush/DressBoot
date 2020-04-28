@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface ItemsRepository extends CrudRepository<Item, Integer> {
-    List<Item> findAllByBrand(Optional<Brand> brand);
+    List<Item> findAllByBrand(Brand brand);
     List<Item> findAllByLooks(Look look);
-    Item findById(long id);
+    Optional<Item> findById(long id);
 }

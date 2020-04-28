@@ -44,7 +44,7 @@ public class Look {
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users", nullable = false)
-    private User user;
+    private User owner;
 
     @Override
     public String toString() {

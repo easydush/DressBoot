@@ -4,9 +4,10 @@ import com.dressup.demo.models.Brand;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface BrandRepository extends CrudRepository<Brand, Integer> {
-    Brand findBrandById(Integer id);
-    Integer countAll();
-    Brand findBrandByName(String name);
+    Optional<Brand> findBrandById(Integer id);
+    Optional<Brand> findBrandByName(String name);
 }
