@@ -50,6 +50,7 @@ public class ItemServiceImpl implements ItemService {
         newLooks.add(looksRepository.findById(look_id).get());
         Item item  = Item
                 .builder()
+                .name(itemDto.getName())
                 .description(itemDto.getDescription())
                 .owner(owner)
                 .id(itemDto.getId())

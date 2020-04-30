@@ -3,10 +3,11 @@
 <#include "../macros/base.ftlh">
 
 <#macro page_title>
-    <title>${user.username}'s looks</title>
+    <title>${user.username}'s items</title>
 </#macro>
 
 <#macro page_body>
+    <h3>Add new item</h3>
     <form method="post">
         <div class="form-group">
             <label>Title:</label>
@@ -31,20 +32,29 @@
             </div>
         </div>
 
-        <#--<div class="form-group">
-            <label>Choose items:</label>
-            <@spring.formSingleSelect  "form.brand" "class='form-control'"/>
-            <div class="text-danger">
-                <@spring.showErrors "<br>"/>
-            </div>
-            <label for="brand">Choose a brand:</label><select id="brand" size="3">
+        <div class="form-group">
+            <label for="brand_name">Choose a brand:</label>
+            <select id="brand_name"  name="brand_name" size="1" required="required">
                 <#if brands??>
+                    <option value=null>-----</option>
                     <#list brands as brand>
-                        <option>${brand.name}</option>
+                        <option value="${brand.name}">${brand.name}</option>
                     </#list>
                 </#if>
             </select>
-        </div>-->
+        </div>
+        <div class="form-group">
+            <label>Choose look:</label>
+            <label for="look_id">Choose a look:</label>
+            <select id="look_id" size="1" name="look_id">
+                <option value=null>-----</option>
+                <#if looks??>
+                    <#list looks as look>
+                        <option value="${look.id}">${look.name}</option>
+                    </#list>
+                </#if>
+            </select>
+        </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <input type="submit" class="btn btn-success" value="Confirm">
     </form>

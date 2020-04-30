@@ -23,6 +23,7 @@
             <h2 class="my-0 mr-md-auto font-weight-normal" href="/">Dress Up</h2>
             <nav class="my-2 my-md-0 mr-md-3">
                 <@security.authorize access="isAuthenticated()">
+                    <a href="/brands" class="btn mr-2 btn-outline">Brands</a>
                     <a href="/profile/looks/create" class="btn mr-2 btn-outline-success">Create look</a>
                     <a href="/profile" class="mr-2"><@security.authentication property="principal.username" /></a>
                     <a href="/logout">Log out</a>

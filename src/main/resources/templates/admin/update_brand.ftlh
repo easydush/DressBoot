@@ -33,12 +33,9 @@
             </div>
         </div>
 
-        </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <input type="submit" class="btn btn-success" value="Confirm">
     </form>
-
-    </div>
 
 </#macro>
 

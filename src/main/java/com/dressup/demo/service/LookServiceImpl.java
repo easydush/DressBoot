@@ -32,6 +32,7 @@ public class LookServiceImpl implements LookService {
                 .owner(owner)
                 .id(lookDto.getId())
                 .items(new ArrayList<Item>())
+                .name(lookDto.getName())
                 .build();
         looksRepository.save(look);
         return look;

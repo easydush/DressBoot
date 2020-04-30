@@ -34,6 +34,7 @@ public class BrandServiceImpl implements BrandService {
                 .id(brandDto.getId())
                 .items(new ArrayList<Item>())
                 .logoUrl(brandDto.getLogoUrl())
+                .name(brandDto.getName())
                 .build();
         brandRepository.save(brand);
         return brand;
@@ -46,6 +47,7 @@ public class BrandServiceImpl implements BrandService {
                 .id(id)
                 .items(new ArrayList<Item>())
                 .logoUrl(brandDto.getLogoUrl())
+                .name(brandDto.getName())
                 .build();
         brandRepository.save(brand);
         return brand;

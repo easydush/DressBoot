@@ -9,7 +9,7 @@
 <#macro page_body>
     <div class="col-6 offset-3">
         <h1>My looks</h1>
-        <button href="/profile/looks/create">Create new look</button>
+        <a href="/profile/looks/create">Create new look</a>
         <#list looks as look>
             <div class="look-card">
                 <div class="look-header">
@@ -35,8 +35,8 @@
                     
                 </tr>
                 </#list>
-            <#else>
-            <h4>No Looks Available</h4>
+            <#--<#else>
+            <h4>No Looks Available</h4>-->
             </#if>
             </#list>
     </div>

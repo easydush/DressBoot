@@ -31,6 +31,7 @@ public class Look {
     private String description;
 
     @Size(min = 1, max = 20)
+    @NotNull
     private String name;
 
     @ManyToMany(cascade = { CascadeType.ALL })

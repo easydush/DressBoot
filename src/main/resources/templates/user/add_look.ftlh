@@ -7,6 +7,7 @@
 </#macro>
 
 <#macro page_body>
+    <h3>Add new look</h3>
     <form method="post">
         <div class="form-group">
             <label>Title:</label>
