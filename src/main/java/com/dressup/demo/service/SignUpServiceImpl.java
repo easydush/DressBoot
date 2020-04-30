@@ -31,7 +31,7 @@ public class SignUpServiceImpl implements SignUpService {
                 .fullName(form.getFullName())
                 .hashPassword(passwordEncoder.encode(form.getPassword()))
                 .role(Role.USER)
-                .state(State.NOT_CONFIRMED)
+                .state(State.CONFIRMED)
                 .build();
         userRepository.save(user);
     }

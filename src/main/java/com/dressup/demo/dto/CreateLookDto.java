@@ -21,13 +21,15 @@ public class CreateLookDto {
     private Long id;
     @Length(min = 1, max = 140)
     private String description;
-    private ArrayList<Item> items;
+    private List<Item> items;
+    private UserDto owner;
 
     public static CreateLookDto from(Look look) {
         return CreateLookDto.builder()
                 .id(look.getId())
                 .description(look.getDescription())
-                .items(new ArrayList<Item>())
+                .items(look.getItems())
+                .owner(UserDto.from(look.getOwner()))
                 .build();
     }
 

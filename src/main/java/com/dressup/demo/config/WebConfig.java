@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -17,19 +18,21 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@ComponentScan("com.dressup.demo.utils")
-@EnableWebMvc
+@ComponentScan("com.dressup.demo.controllers")
+//@EnableWebMvc
+/*@EnableJpaRepositories()*/
 public class WebConfig implements WebMvcConfigurer {
+/*
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/static/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/static/css/");
         registry.addResourceHandler("/fonts/**").addResourceLocations("/resources/static/fonts/");
-
-        registry.addResourceHandler("/images/**").addResourceLocations("/images/static/fonts/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/static/images/");
     }
 
+*/
 
     @Bean
     public Validator validator() {

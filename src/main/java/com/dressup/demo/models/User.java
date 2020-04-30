@@ -7,12 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.*;
 
 
@@ -38,11 +34,7 @@ public class User {
     @Column(nullable = false)
     private String fullName;
 
-    @NotBlank
-    @Transient
-    private String passwordRepeat;
-
-    @Length(max = 16)
+    @Length(min = 6)
     @Column(nullable = false)
     private String hashPassword;
 

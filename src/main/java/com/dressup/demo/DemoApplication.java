@@ -12,11 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 @EnableJpaRepositories("com.dressup.demo.repositories")
 public class DemoApplication {
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }

@@ -1,50 +1,34 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <#-- <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-          rel="stylesheet">-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
-<div class="container" id="wrapper">
-   <img alt='pattot' src="/images/phparrot.gif">
-    <#list items as item>
-        <div class="item-card">
-            <div class="item-header">
-                <h3 class="item-name">${item.name}</a></h3>
-                <span class="item-url">${item.image_url}</span>
-                <span class="item-info">${item.brand}</span>
-            </div>
-            <div class="item-description">${item.description}</div>
+<#import "/spring.ftl" as spring />
+
+<#include "macros/base.ftlh">
+
+<#macro page_title>
+    <title>All brands</title>
+</#macro>
+
+<#macro page_body>
+    <div class="col-6 offset-3">
+        <h1>All brands</h1>
+        <a href="/brands/create">Add new brand</a>
+        <tr>
+        <#list brands as brand>
+        <div class="brand-card">
+            <td><div class="brand-header">
+                <h3 class="brand-name">${brand.name}</a></h3>
+                </div>
+            </td>
+            <td>
+                <div class="brand-description">${brand.description}</div>
+            </td>
+            <td>
+                <img href="${brand.logo_url}">
+            </td>
+
         </div>
-    </#list>
-    <div id="blog" onclick="LoadNews()">
-        <img alt='parrot' src="/images/sherlockholmesparrot.gif">
+        </#list>
+        </tr>
     </div>
-    
-</div>
-<script>
-    $('#blog').scroll(function () {
-        LoadNews()
-    });
 
-    function LoadNews() {
-        /*let itemSelect = $('#future');*/
-        $.getJSON("/items/all", function () {
-            itemSelect.empty();
-            $.each(function (i) {
-                $('.container').append('<div class="item-card">' + i + this + '</div>');
-            });
-        })
-    }
+</#macro>
 
-    $(document).ready(function () {
-        LoadNews();
-    });
-
-</script>
+<@display_page/>

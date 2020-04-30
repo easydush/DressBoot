@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,16 +16,18 @@ import java.util.stream.Collectors;
 @Data
 @Builder
 public class LookDto {
-    private int id;
+    private long id;
     private String name;
     private String description;
     private UserDto owner;
+    private List<Item> items;
 
     public static LookDto from(Look look) {
         return LookDto.builder()
                 .id(look.getId())
                 .name(look.getName())
                 .description(look.getDescription())
+                .items(look.getItems())
                 .owner(UserDto.from(look.getOwner()))
                 .build();
     }

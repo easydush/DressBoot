@@ -29,7 +29,7 @@ public class Look {
     @Length(max = 50)
     @Column(columnDefinition = "text")
     private String description;
-    @NotNull
+
     @Size(min = 1, max = 20)
     private String name;
 
@@ -41,7 +41,7 @@ public class Look {
     )
     private List<Item> items = new ArrayList<Item>();
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users", nullable = false)
     private User owner;

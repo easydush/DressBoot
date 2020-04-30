@@ -10,9 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface LooksRepository extends JpaRepository<Look, Long> {
-    List<Look> findAllByUser(User user);
     List<Look> findAllByItems(Item item);
     Optional<Look> findByName(String name);
     Optional<Look> findById(long id);

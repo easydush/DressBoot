@@ -20,8 +20,8 @@ public class LookServiceImpl implements LookService {
     private UserService userService;
 
     @Override
-    public List<Look> getAllLooks(Integer page, Integer size, String property) {
-        return null;
+    public List<Look> getAllLooks() {
+        return looksRepository.findAll();
     }
 
     @Override
@@ -50,5 +50,6 @@ public class LookServiceImpl implements LookService {
         List<Look> looks = looksRepository.findAllByOwner(owner);
         return looks;
     }
+
 
 }

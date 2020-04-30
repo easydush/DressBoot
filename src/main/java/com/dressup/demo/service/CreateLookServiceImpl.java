@@ -6,7 +6,6 @@ import com.dressup.demo.models.Item;
 import com.dressup.demo.models.Look;
 import com.dressup.demo.models.User;
 import com.dressup.demo.repositories.LooksRepository;
-import com.dressup.demo.service.CreateLookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

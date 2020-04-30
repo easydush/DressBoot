@@ -31,21 +31,20 @@ public class Item {
     @Column(columnDefinition = "text")
     private String description;
 
-    @NotNull
     @Size(min = 1, max = 255)
     private String name;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "brands", nullable = false)
     private Brand brand;
 
 
-    @NotNull
+
     @ManyToMany(mappedBy = "items")
     private List<Look> looks = new ArrayList<Look>();
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users", nullable = false)
     private User owner;
