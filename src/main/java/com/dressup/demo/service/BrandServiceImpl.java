@@ -38,7 +38,29 @@ public class BrandServiceImpl implements BrandService {
         brandRepository.save(brand);
         return brand;
     }
+    @Override
+    public Brand addBrand(BrandDto brandDto, Long id) {
+        Brand brand  = Brand
+                .builder()
+                .description(brandDto.getDescription())
+                .id(id)
+                .items(new ArrayList<Item>())
+                .logoUrl(brandDto.getLogoUrl())
+                .build();
+        brandRepository.save(brand);
+        return brand;
+    }
 
+    @Override
+    public void deleteBrand(Long id) {
+        brandRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateBrand(BrandDto brandData, Long id) {
+        deleteBrand(id);
+        addBrand(brandData, id);
+    }
 
 
     @Override

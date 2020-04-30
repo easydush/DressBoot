@@ -15,4 +15,10 @@ public interface BrandService {
 
     Brand addBrand(BrandDto brandData);
 
+    Brand addBrand(BrandDto brandData, Long id);
+
+    void deleteBrand(Long id);
+
+    void updateBrand(BrandDto brandData, Long id);
+
 }

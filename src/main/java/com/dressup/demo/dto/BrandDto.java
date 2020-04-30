@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Data
 @Builder
 public class BrandDto {
-    private int id;
+    private long id;
     private String name;
     private String description;
     private String logoUrl;

@@ -14,7 +14,8 @@ public interface ItemService {
 
    Item getItem(Long id);
 
-    Item addItem(ItemDto itemData, User owner, Brand brand);
+    Item addItem(ItemDto itemData, User owner, String brand_name);
+    Item addItem(ItemDto itemData, User owner, String brand_name, Long look_id);
 
     List<Item > getUsersAllItems(User owner);
 

@@ -21,7 +21,14 @@
             </div>
             <input class="btn btn-primary" type="submit" value="Log in">
         </form>
-        <p> Login from VK: <a href="${vkLogin}">click here</a></p>
+        <div class="container unauthenticated">
+            <div>
+                Login from VK: <a href="${vkLogin}">click here</a>
+            </div>
+            <div>
+                With Google: <a href="/oauth2/authorization/google">click here</a>
+            </div>
+        </div>
 
 
     </div>

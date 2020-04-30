@@ -38,7 +38,12 @@ public class MainController {
    @Autowired
    private VkConnector vkConnector;
 
-
+   @PreAuthorize("permitAll()")
+   @GetMapping("/welcome")
+   public String welcome(@AuthenticationPrincipal OAuth2User principal, ModelMap map){
+      map.put("username",principal.getName());
+      return "success/signup";
+   }
 
    @GetMapping("/login")
    public String getLoginPage(Model model) throws MalformedURLException {
