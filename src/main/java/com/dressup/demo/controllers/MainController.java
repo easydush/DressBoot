@@ -1,6 +1,7 @@
 package com.dressup.demo.controllers;
 
 import com.dressup.demo.config.oauth.VkConnector;
+import com.dressup.demo.config.security.UserDetailsImpl;
 import com.dressup.demo.dto.SignUpDto;
 import com.dressup.demo.service.SignUpService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -46,8 +47,14 @@ public class MainController {
    }
 
    @GetMapping("/login")
-   public String getLoginPage(Model model) throws MalformedURLException {
-     model.addAttribute("vkLogin", vkConnector.getLoginUrl());
+   public String getLoginPage(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestParam(value = "error", required = false) String error, ModelMap map) throws MalformedURLException {
+     map.addAttribute("vkLogin", vkConnector.getLoginUrl());
+      if(userDetails != null) {
+         return "redirect:/profile";
+      }
+      if(error != null) {
+         map.put("error", "USER_NOT_FOUND");
+      }
       return "security/login";
    }
 

@@ -8,6 +8,11 @@
 <#macro page_body>
     <div class="col-6 offset-3">
         <form action="/login" method="post">
+            <#if error?? && error == "USER_NOT_FOUND">
+                <div class="alert alert-danger" role="alert">
+                    <h5>Wrong login or password</h5>
+                </div>
+            </#if>
             <div class="form-group">
                 <label for="usernameInput">Username</label>
                 <input class="form-control" name="username" placeholder="Username" id="usernameInput">
