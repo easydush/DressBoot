@@ -27,38 +27,6 @@ public class UsersController {
     @Autowired
     private UserService userService;
 
-
-    /*@GetMapping("/{username}")
-    public String getUserPage(@PathVariable String username, Model model, Principal principal) {
-        Optional<User> user = userRepository.findUserByUsername(username);
-
-        if (principal != null) {
-            model.addAttribute("currUsername", principal.getName());
-        }
-
-        if (user.isPresent()) {
-            UserDto userDto = UserDto.from(user.get());
-            model.addAttribute("user", user.get());
-
-            // Get users Tweets
-            List<Tweet> userTweets = tweetService.getUsersAllTweets(user.get());
-            model.addAttribute("userTweets", userTweets);
-            // Date Time Formatter
-            model.addAttribute("formatter", dateTimeFormatter);
-
-            // Followers Amount
-            int followerAmount = 0;
-            model.addAttribute("followerAmount", followerAmount);
-        } else {
-            throw new UsernameNotFoundException("Cant find user");
-        }
-
-        return "user_page";
-    }
-*/
-
-
-
     @PostMapping("/checkUsername")
     @ResponseBody
     public boolean checkUsername(@RequestParam("username") String username) {
